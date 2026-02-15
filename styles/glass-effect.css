@@ -1,0 +1,68 @@
+
+/* iOS风格的液体毛玻璃效果 - 新媒体矩阵按钮 */
+.media-icon {
+    /* 基础毛玻璃效果 */
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+
+    /* 边框和圆角 */
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 50% !important;
+
+    /* 阴影效果 */
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 0 20px rgba(196, 30, 58, 0.15) !important;
+
+    /* 过渡效果 */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    /* 液体光泽效果 */
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* 液体光泽动画 */
+.media-icon::before {
+    content: '';
+    position: absolute !important;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
+/* 内部光泽效果 */
+.media-icon::after {
+    display: none;
+}
+
+/* 悬停效果 */
+.media-card:hover .media-icon {
+    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 
+        0 12px 40px 0 rgba(31, 38, 135, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 0 30px rgba(196, 30, 58, 0.25),
+        0 0 20px rgba(196, 30, 58, 0.3) !important;
+    transform: translateY(-5px) scale(1.05) !important;
+    border-color: rgba(255, 200, 200, 0.4) !important;
+}
+
+/* 点击效果 */
+.media-card:active .media-icon {
+    transform: translateY(-2px) scale(0.98) !important;
+    box-shadow: 
+        0 4px 15px 0 rgba(31, 38, 135, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 0 20px rgba(196, 30, 58, 0.2) !important;
+}
