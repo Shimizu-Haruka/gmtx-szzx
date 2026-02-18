@@ -508,9 +508,11 @@
             border-radius: 15px;
             padding: 25px;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .mission-item:hover {
+        .mission-item.animate:hover {
             background: rgba(255, 255, 255, 0);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0);
@@ -575,9 +577,11 @@
             padding: 30px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 15px rgba(255, 0, 0, 0.5);
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-.team-card:hover {
+.team-card.animate:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-5px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 0, 0, 0.6);
@@ -612,13 +616,13 @@
             transition: opacity 0.3s ease;
             z-index: -1;
         }
-        .team-card:hover::before {
+        .team-card.animate:hover::before {
             opacity: 1;
         }
-        .team-card:hover::after {
+        .team-card.animate:hover::after {
             opacity: 1;
         }
-        .team-card:hover {
+        .team-card.animate:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
@@ -804,7 +808,7 @@
             transition: all 0.5s ease;
         }
 
-        .research-card:hover {
+        .research-card.animate:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
@@ -908,7 +912,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .media-card:hover {
+        .media-card.animate:hover {
             transform: translateY(-15px);
         }
         .media-icon {
@@ -949,8 +953,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .media-card:hover .icon-douyin {
-            background: linear-gradient(45deg, rgba(254,44,85,0.8), rgba(246,145,106,0.8));
+        .media-card:hover .icon-weixin {
+            background: radial-gradient(circle, rgba(9,187,7,0.8) 0%, rgba(9,187,7,0.2) 70%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -977,7 +981,7 @@
         .icon-xhs { color: #fe2c55; }
         .icon-bilibili { color: #fb7299; }
         .icon-zhihu { color: #0f88eb; }
-        .icon-douyin { color: #000000; background: linear-gradient(45deg, #fe2c55, #f6916a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .icon-weixin { color: #09bb07; }
         /* 响应式设计 */
         @media (max-width: 992px) {
             nav {

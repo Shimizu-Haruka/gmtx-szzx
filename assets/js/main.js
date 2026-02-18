@@ -504,8 +504,8 @@ researchTabs.forEach(tab => {
         const centerY = rect.height / 2;
         
         // 计算倾斜角度
-        const rotateX = (y - centerY) / 5;
-        const rotateY = (centerX - x) / 25;
+        const rotateX = - (y - centerY) / 10;
+        const rotateY = - (centerX - x) / 30;
         
         // 应用变换
         tab.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;

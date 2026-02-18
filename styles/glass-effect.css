@@ -1,30 +1,22 @@
-
-/* iOS风格的液体毛玻璃效果 - 新媒体矩阵按钮 */
 .media-icon {
-    /* 基础毛玻璃效果 */
     background: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(20px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
 
-    /* 边框和圆角 */
     border: 1px solid rgba(255, 255, 255, 0.18) !important;
     border-radius: 50% !important;
 
-    /* 阴影效果 */
     box-shadow: 
         0 8px 32px 0 rgba(31, 38, 135, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.4),
         inset 0 0 20px rgba(196, 30, 58, 0.15) !important;
 
-    /* 过渡效果 */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 
-    /* 液体光泽效果 */
     position: relative !important;
     overflow: hidden !important;
 }
 
-/* 液体光泽动画 */
 .media-icon::before {
     content: '';
     position: absolute !important;
@@ -46,7 +38,6 @@
     display: none;
 }
 
-/* 悬停效果 */
 .media-card:hover .media-icon {
     background: rgba(255, 255, 255, 0.2) !important;
     box-shadow: 
@@ -58,7 +49,6 @@
     border-color: rgba(255, 200, 200, 0.4) !important;
 }
 
-/* 点击效果 */
 .media-card:active .media-icon {
     transform: translateY(-2px) scale(0.98) !important;
     box-shadow: 
