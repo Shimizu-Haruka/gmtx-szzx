@@ -1,0 +1,35 @@
+/* 微信公众号和视频号模态框的高级动画效果 */
+@keyframes qrModalAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* 二维码容器的高级动画效果 */
+@keyframes qrGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(7, 193, 96, 0.3), 0 0 20px rgba(7, 193, 96, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(7, 193, 96, 0.5), 0 0 40px rgba(7, 193, 96, 0.3);
+    }
+}
+
+/* 应用动画到模态框 */
+.video-modal-content {
+    animation: qrModalAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 应用动画到二维码容器 */
+.video-qr-container {
+    animation: qrGlow 2s ease-in-out infinite alternate;
+}

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/music.css">
+    <link rel="stylesheet" href="assets/css/video-modal.css">
 </head>
 
 <!-- 图片查看器模态框 -->
@@ -16,6 +18,124 @@
         <img id="viewerImage" src="" alt="放大查看">
     </div>
 </div>
+
+<!-- 音乐下载模态框 -->
+<div id="musicModal" class="music-modal">
+    <div class="music-modal-content">
+        <div class="music-modal-header">
+            <h3 class="music-modal-title">音乐下载</h3>
+            <span class="close-music-modal">&times;</span>
+        </div>
+        <div class="music-modal-body">
+            <div class="music-download-options">
+                <div class="music-download-card">
+                    <div class="music-card-notes">
+                        <span class="music-card-note">♪</span>
+                        <span class="music-card-note">♫</span>
+                        <span class="music-card-note">♩</span>
+                    </div>
+                    <div class="music-download-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="music-download-info">
+                        <h4 class="music-download-title">《赓脉拓新，守正知行》</h4>
+                        <p class="music-download-desc">第一版</p>
+                    </div>
+                    <a href="./musics/《赓脉拓新，守正知行》.mp3" class="music-download-link" download>
+                        <button class="download-button">
+                            <span>下载</span>
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </a>
+                    <div class="music-waveform"></div>
+                </div>
+                <div class="music-download-card">
+                    <div class="music-card-notes">
+                        <span class="music-card-note">♪</span>
+                        <span class="music-card-note">♫</span>
+                        <span class="music-card-note">♩</span>
+                    </div>
+                    <div class="music-download-icon">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <div class="music-download-info">
+                        <h4 class="music-download-title">《赓脉拓新，守正知行》2</h4>
+                        <p class="music-download-desc">第二版</p>
+                    </div>
+                    <a href="./musics/《赓脉拓新，守正知行》2.mp3" class="music-download-link" download>
+                        <button class="download-button">
+                            <span>下载</span>
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </a>
+                    <div class="music-waveform"></div>
+                </div>
+            </div>
+            <div class="lyrics-container">
+                <h4 class="lyrics-title">歌词</h4>
+                <div class="lyrics-content">
+                    <h5 class="lyrics-song-title">《赓脉拓新，守正知行》</h5>
+                    <div class="lyrics-section">
+                        <p>循着红墙，轻叩紫禁城六百载的门</p>
+                        <p>数字光影，在工美馆重燃民族的魂</p>
+                        <p>文创出圈，为古老技艺注入新体温</p>
+                        <p>不忘本来，于墨香深处寻根脉的纹</p>
+                    </div>
+                    <div class="lyrics-section">
+                        <p>永定河畔，西山倒映颐和园的春</p>
+                        <p>模式口老街，咖啡香里漫着邻里温</p>
+                        <p>爨底下炊烟，琉璃渠转动时光的轮</p>
+                        <p>协同聚力，让文化带绵延古今的魂</p>
+                    </div>
+                    <div class="lyrics-section">
+                        <p>走进街巷社区，将理论化作轻声宣讲</p>
+                        <p>巧手生花，红纸剪出岁月祥和的景象</p>
+                        <p>匠心凝练，方寸间铸造徽章闪耀光芒</p>
+                        <p>薪火相传，让"潮"文化在心田里生长</p>
+                    </div>
+                    <div class="lyrics-section">
+                        <p>赓脉拓新，我们在路上守正知行！</p>
+                        <p>两创为帆，让传统在当代破浪新生！</p>
+                        <p>以人民为中心，绘就文明共享的图景！</p>
+                        <p>看青春执笔，为万里山河点睛！</p>
+                    </div>
+                    <div class="lyrics-section">
+                        <p>赓续的脉搏，拓新的征途，是知行合一的远方！</p>
+                        <p>以我青春炽热，汇入文明星河璀璨悠长！</p>
+                        <p>每一次触摸与创造，都在续写未来的篇章！</p>
+                        <p>看文脉生生不息，在掌心长出年轮的模样！</p>
+                    </div>
+                    <div class="lyrics-section">
+                        <p>足迹漫成常诗，灯火接过便明亮</p>
+                        <p>故事永是序章，而歌声持续传唱</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 微信视频号二维码模态框 -->
+<div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+        <div class="video-modal-header">
+            <h3 class="video-modal-title">微信视频号</h3>
+            <span class="close-video-modal">&times;</span>
+        </div>
+        <div class="video-modal-body">
+            <div class="video-qr-container">
+                <div class="qr-loading">
+                    <div class="qr-spinner"></div>
+                    <p class="qr-loading-text">正在加载二维码...</p>
+                </div>
+                <img id="videoQrCode" src="" alt="微信视频号二维码" class="video-qr-code">
+            </div>
+            <p class="video-modal-desc">扫描二维码关注我们的微信视频号，获取更多精彩内容</p>
+        </div>
+    </div>
+</div>
+
+
 
 <body>
 
@@ -207,8 +327,8 @@
                         <p class="mission-desc">系统收集创意文创、国潮品牌、数字文博等典型案例，分析其成功经验与创新路径。</p>
                     </div>
                     <div class="mission-item" id="practiceItem5">
-                        <h3 class="mission-title"><i class="fas fa-chalkboard-teacher"></i> 校园宣讲</h3>
-                        <p class="mission-desc">结合调研成果开展校园宣讲，阐释文化创新背后的时代内涵，传播传统文化新魅力。</p>
+                        <h3 class="mission-title"><i class="fas fa-chalkboard-teacher"></i> 社区宣讲</h3>
+                        <p class="mission-desc">结合调研成果开展社区宣讲，阐释文化创新背后的时代内涵，传播传统文化新魅力。</p>
                     </div>
                     <div class="mission-item" id="practiceItem6">
                         <h3 class="mission-title"><i class="fas fa-bullhorn"></i> 社会传播</h3>
@@ -230,9 +350,10 @@
             </div>
 
             <div class="research-tabs">
-                <div class="research-tab active" data-tab="forbidden-city">故宫博物院调研 —— 赓续千年文脉，拓新时代华章</div>
-                <div class="research-tab" data-tab="art-museum">中国工艺美术馆调研 —— 何以中国，何以创新</div>
-                <div class="research-tab" data-tab="news">西山永定河文化带调研 —— 青年视角下的协同创新与文脉传承</div>
+                <div class="research-tab active" data-tab="forbidden-city">故宫博物院调研<span> —— 赓续千年文脉，拓新时代华章</span></div>
+                <div class="research-tab" data-tab="art-museum">中国工艺美术馆调研<span> —— 何以中国，何以创新</span></div>
+                <div class="research-tab" data-tab="news">西山永定河文化带调研<span> —— 青年视角下的协同创新与文脉传承</span></div>
+                <div class="research-tab" data-tab="youth-innovation">青年创新实践<span> —— 让传统文化在新时代焕发新生</span></div>
             </div>
 
             <!-- 故宫调研内容 -->
@@ -367,6 +488,76 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 青年创新实践调研内容 -->
+            <div id="youth-innovation" class="research-content">
+                <div class="research-card" id="researchCard12">
+                    <h3 class="research-card-title"><i class="fas fa-seedling"></i></h3>
+                    <div class="research-card-content">
+                        <p></p>
+                    </div>
+                    <div class="research-images">
+                        <img src="https://picsum.photos/seed/youth1/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/youth2/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/youth3/400/300.jpg" alt="" class="research-img">
+                    </div>
+                </div>
+                <div class="research-card" id="researchCard13">
+                    <h3 class="research-card-title"><i class="fas fa-rocket"></i></h3>
+                    <div class="research-card-content">
+                        <p></p>
+                    </div>
+                    <div class="research-images">
+                        <img src="https://picsum.photos/seed/digital1/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/digital2/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/digital3/400/300.jpg" alt="" class="research-img">
+                    </div>
+                </div>
+                <div class="research-card" id="researchCard14">
+                    <h3 class="research-card-title"><i class="fas fa-users"></i></h3>
+                    <div class="research-card-content">
+                        <p></p>
+                    </div>
+                    <div class="research-images">
+                        <img src="https://picsum.photos/seed/identity1/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/identity2/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/identity3/400/300.jpg" alt="" class="research-img">
+                    </div>
+                </div>
+                <div class="research-card" id="researchCard15">
+                    <h3 class="research-card-title"><i class="fas fa-road"></i></h3>
+                    <div class="research-card-content">
+                        <p></p>
+                    </div>
+                    <div class="research-images">
+                        <img src="https://picsum.photos/seed/mission1/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/mission2/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/mission3/400/300.jpg" alt="" class="research-img">
+                    </div>
+                </div>
+                <div class="research-card" id="researchCard16">
+                    <h3 class="research-card-title"><i class="fas fa-lightbulb"></i></h3>
+                    <div class="research-card-content">
+                        <p></p>
+                    </div>
+                    <div class="research-images">
+                        <img src="https://picsum.photos/seed/case1/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/case2/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/case3/400/300.jpg" alt="" class="research-img">
+                    </div>
+                </div>
+                <div class="research-card" id="researchCard17">
+                    <h3 class="research-card-title"><i class="fas fa-globe"></i></h3>
+                    <div class="research-card-content">
+                        <p></p>
+                    </div>
+                    <div class="research-images">
+                        <img src="https://picsum.photos/seed/global1/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/global2/400/300.jpg" alt="" class="research-img">
+                        <img src="https://picsum.photos/seed/global3/400/300.jpg" alt="" class="research-img">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <div class="section-divider"></div>
@@ -405,6 +596,19 @@
     <div class="section-divider"></div>
 
 
+    <!-- 音乐下载悬浮按钮 -->
+    <div class="music-float-btn" id="musicDownloadBtn">
+        <div class="music-float-icon">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="music-float-tooltip">音乐下载</div>
+        <div class="music-notes">
+            <span class="music-note note1">♪</span>
+            <span class="music-note note2">♫</span>
+            <span class="music-note note3">♩</span>
+        </div>
+    </div>
+
     <!-- 新媒体矩阵 -->
     <section id="media" class="media-section">
         <div class="container">
@@ -438,6 +642,12 @@
                     </div>
                     <div class="media-name">微信公众号</div>
                 </a>
+                <div class="media-card" id="mediaCardVideo" style="cursor: pointer;">
+                    <div class="media-icon">
+                        <i class="fas fa-play-circle icon-weixin-video"></i>
+                    </div>
+                    <div class="media-name">微信视频号</div>
+                </div>
                 <a href="https://www.douyin.com/user/MS4wLjABAAAAT8uHa_l8lbqLZFy9hjms9zv9JGIuAeVJ8l9cs01na35z9X42zccdZda2s5KghYtG?from_tab_name=main" target="_blank" class="media-card" id="mediaCard5">
                     <div class="media-icon">
                         <svg class="icon-douyin" viewBox="0 0 24 24" width="48" height="48">
@@ -451,6 +661,7 @@
     </section>
 
    <script src="assets/js/main.js"></script>
+   <script src="assets/js/music.js"></script>
+   <script src="assets/js/video-modal-enhanced.js"></script>
 </body>
-
 </html>

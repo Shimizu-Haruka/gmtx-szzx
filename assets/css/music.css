@@ -1,0 +1,721 @@
+
+/* 音乐下载悬浮按钮 */
+.music-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.music-float-btn:hover {
+    width: 180px;
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(196, 30, 58, 0.5);
+}
+
+.music-float-btn:active {
+    transform: scale(0.95);
+}
+
+.music-float-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.music-float-icon i {
+    animation: musicPulse 2s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.music-float-tooltip {
+    position: absolute;
+    left: 60px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.4s ease;
+}
+
+.music-float-btn:hover .music-float-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* 音乐音符样式 */
+.music-notes {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 40px;
+    overflow: hidden;
+    transition: width 0.4s ease;
+    opacity: 0;
+}
+
+.music-float-btn:hover .music-notes {
+    width: 100px;
+    opacity: 1;
+}
+
+.music-note {
+    position: absolute;
+    font-size: 24px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    filter: blur(0.5px);
+}
+
+.music-float-btn:hover .music-note {
+    opacity: 1;
+}
+
+.note1 {
+    left: 20px;
+    top: 5px;
+    animation: noteFloat1 4s ease-in-out infinite;
+}
+
+.note2 {
+    left: 50px;
+    top: 15px;
+    animation: noteFloat2 5s ease-in-out infinite 0.5s;
+}
+
+.note3 {
+    left: 80px;
+    top: 25px;
+    animation: noteFloat3 6s ease-in-out infinite 1s;
+}
+
+@keyframes noteFloat1 {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+        opacity: 0.6;
+    }
+    25% { 
+        transform: translateY(-8px) rotate(3deg); 
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateY(-4px) rotate(-2deg); 
+        opacity: 0.5;
+    }
+    75% { 
+        transform: translateY(-6px) rotate(2deg); 
+        opacity: 0.7;
+    }
+}
+
+@keyframes noteFloat2 {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+        opacity: 0.5;
+    }
+    25% { 
+        transform: translateY(-6px) rotate(-2deg); 
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-10px) rotate(3deg); 
+        opacity: 0.7;
+    }
+    75% { 
+        transform: translateY(-3px) rotate(-1deg); 
+        opacity: 0.6;
+    }
+}
+
+@keyframes noteFloat3 {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+        opacity: 0.6;
+    }
+    25% { 
+        transform: translateY(-7px) rotate(2deg); 
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateY(-12px) rotate(-3deg); 
+        opacity: 0.5;
+    }
+    75% { 
+        transform: translateY(-5px) rotate(2deg); 
+        opacity: 0.7;
+    }
+}
+
+/* 音乐下载模态框样式 */
+.music-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease;
+}
+
+.music-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-modal-content {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    width: 90%;
+    max-width: 600px;
+    padding: 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(196, 30, 58, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.music-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, rgba(196, 30, 58, 0.08) 0%, rgba(196, 30, 58, 0.04) 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.music-modal-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-light);
+    font-family: 'Ma Shan Zheng', cursive;
+    letter-spacing: 0.5px;
+}
+
+.close-music-modal {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    line-height: 1;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.close-music-modal:hover {
+    color: #fff;
+    background: var(--primary);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+}
+
+.music-modal-body {
+    padding: 30px;
+}
+
+.music-download-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.music-download-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px 8px 20px 8px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.music-download-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(196, 30, 58, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.music-download-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(196, 30, 58, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.music-download-card:hover::after {
+    opacity: 1;
+    animation: wave 3s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(-5%) translateY(-3px);
+    }
+    50% {
+        transform: translateX(0) translateY(0);
+    }
+    75% {
+        transform: translateX(5%) translateY(-3px);
+    }
+}
+
+.music-download-card:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border-color: rgba(196, 30, 58, 0.3);
+    transform: translateY(-5px) rotate(-1deg);
+    box-shadow: 0 10px 30px rgba(196, 30, 58, 0.2), 0 0 20px rgba(196, 30, 58, 0.1);
+}
+
+.music-download-card:hover::before {
+    opacity: 1;
+}
+
+.music-download-card:hover::after {
+    opacity: 1;
+}
+
+.music-download-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, rgba(196, 30, 58, 0.2) 0%, rgba(196, 30, 58, 0.1) 100%);
+    border-radius: 50% 30% 40% 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 28px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.15);
+    transition: all 0.4s ease;
+}
+
+.music-download-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50% 30% 40% 60%;
+    border: 2px solid rgba(196, 30, 58, 0.3);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.4s ease;
+}
+
+.music-download-card:hover .music-download-icon {
+    transform: scale(1.05) rotate(10deg);
+    box-shadow: 0 6px 20px rgba(196, 30, 58, 0.25);
+}
+
+.music-download-card:hover .music-download-icon::before {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.music-card-notes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.music-card-note {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(196, 30, 58, 0.15);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.music-download-card:hover .music-card-note {
+    opacity: 1;
+}
+
+.music-card-note:nth-child(1) {
+    top: 20%;
+    right: 15%;
+    animation: floatNote 3s ease-in-out infinite;
+}
+
+.music-card-note:nth-child(2) {
+    top: 60%;
+    right: 25%;
+    animation: floatNote 4s ease-in-out infinite 0.5s;
+}
+
+.music-card-note:nth-child(3) {
+    top: 40%;
+    right: 10%;
+    animation: floatNote 3.5s ease-in-out infinite 1s;
+}
+
+@keyframes floatNote {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(-3deg);
+    }
+    75% {
+        transform: translateY(-8px) rotate(3deg);
+    }
+}
+
+.music-download-info {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* 波形条已移除 */
+
+.music-download-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.music-download-card:hover .music-download-title {
+    color: var(--primary);
+}
+
+.music-download-desc {
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.music-download-card:hover .music-download-desc {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.download-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+    z-index: 1;
+}
+
+.download-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.download-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.download-button:hover::before {
+    left: 100%;
+}
+
+.download-button:hover::after {
+    opacity: 1;
+}
+
+.download-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(196, 30, 58, 0.4);
+}
+
+.download-button:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.download-button.downloading {
+    pointer-events: none;
+}
+
+.download-button.downloading::before {
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.download-button.downloading span {
+    display: inline-block;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.download-button.downloading i {
+    animation: moveDown 1s ease-in-out infinite;
+}
+
+@keyframes moveDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+.lyrics-container {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.lyrics-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(196, 30, 58, 0.1) 0%, transparent 70%);
+    opacity: 0.5;
+}
+
+.lyrics-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 18px 0;
+    color: var(--text-light);
+    font-family: 'Ma Shan Zheng', cursive;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.5px;
+}
+
+.lyrics-content {
+    line-height: 2.2;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 1;
+}
+
+.lyrics-content p {
+    margin: 0 0 12px 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transform-origin: left center;
+}
+
+.lyrics-content p::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(196, 30, 58, 0.2), transparent);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.lyrics-content p:hover {
+    color: rgba(255, 255, 255, 0.95);
+    transform: translateX(8px);
+    text-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+}
+
+.lyrics-content p:hover::before {
+    width: 100%;
+}
+
+.lyrics-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* 歌词部分动画 */
+.lyrics-section {
+    margin-bottom: 24px;
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+}
+
+.lyrics-section::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196, 30, 58, 0.3), transparent);
+    animation: waveLine 2s ease-in-out infinite;
+}
+
+.lyrics-section:last-child::after {
+    display: none;
+}
+
+@keyframes waveLine {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-5px);
+        opacity: 0.6;
+    }
+}
+
+.lyrics-chorus {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 15px 0 rgba(196, 30, 58, 0.4);
+    }
+}

@@ -148,6 +148,12 @@
                                 card.classList.add('animate');
                             }, index * 150);
                         });
+                    } else if (tabId === 'youth-innovation') {
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('animate');
+                            }, index * 100);
+                        });
                     }
                 }, 100);
             });
@@ -423,7 +429,8 @@
                     setTimeout(() => document.getElementById('mediaCard2').classList.add('animate'), 100);
                     setTimeout(() => document.getElementById('mediaCard3').classList.add('animate'), 200);
                     setTimeout(() => document.getElementById('mediaCard4').classList.add('animate'), 300);
-                    setTimeout(() => document.getElementById('mediaCard5').classList.add('animate'), 400);
+                    setTimeout(() => document.getElementById('mediaCardVideo').classList.add('animate'), 400);
+                    setTimeout(() => document.getElementById('mediaCard5').classList.add('animate'), 500);
                     mediaObserver.unobserve(entry.target);
                 }
             });
@@ -526,50 +533,41 @@
 // 按钮跟随鼠标方向倾斜效果
 document.addEventListener('DOMContentLoaded', function() {
     const heroBtn = document.querySelector('.hero-btn');
-    const icon = heroBtn.querySelector('i');
-    const text = heroBtn.querySelector('span');
+
     
     // 鼠标在按钮上移动时
     heroBtn.addEventListener('mousemove', function(e) {
-        // 获取按钮位置信息
         const rect = heroBtn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
         
         // 计算鼠标相对于按钮中心的位置
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
         
-        // 计算鼠标相对于按钮中心的偏移量
-        const deltaX = (e.clientX - centerX) / rect.width;
-        const deltaY = (e.clientY - centerY) / rect.height;
+
         
-        // 设置最大旋转角度（度）
-        const maxRotate = 20;
+
         
-        // 计算旋转角度
-        const rotateX = -deltaY * maxRotate;
-        const rotateY = deltaX * maxRotate;
+        // 计算倾斜角度
+        const rotateX = - (y - centerY) / 10;
+        const rotateY = - (centerX - x) / 30;
         
         // 应用变换到按钮
-        heroBtn.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        heroBtn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
         
-        // 设置最大移动距离
-        const maxMove = 8;
+
         
-        // 计算元素应该移动的距离
-        const moveX = deltaX * maxMove;
-        const moveY = deltaY * maxMove;
+
         
-        // 应用变换到文字和图标
-        text.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        icon.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
     });
     
     // 鼠标离开按钮时
     heroBtn.addEventListener('mouseleave', function() {
-        // 重置按钮、文字和图标位置
-        heroBtn.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
-        text.style.transform = 'translate(0, 0)';
-        icon.style.transform = 'translate(0, 0)';
+        // 鼠标离开时恢复原状
+        heroBtn.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+
     });
 });
 
@@ -618,4 +616,51 @@ function initCurrentSection() {
             currentSectionIndex = index;
         }
     });
+
+// 微信视频号二维码模态框
+const videoCard = document.getElementById('mediaCardVideo');
+const videoModal = document.getElementById('videoModal');
+const closeVideoModal = document.querySelector('.close-video-modal');
+const videoQrCode = document.getElementById('videoQrCode');
+const qrLoading = document.querySelector('.qr-loading');
+
+// 点击微信视频号按钮显示模态框
+videoCard.addEventListener('click', function(e) {
+    e.preventDefault();
+    videoModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    
+    // 直接显示二维码图片
+    videoQrCode.src = 'images/video-qr-code.jpg'; // 替换为实际的二维码图片路径
+    videoQrCode.classList.add('loaded');
+    qrLoading.classList.add('hidden');
+});
+
+// 关闭模态框
+closeVideoModal.addEventListener('click', function() {
+    videoModal.classList.remove('show');
+    document.body.style.overflow = '';
+    
+    // 重置状态
+    setTimeout(() => {
+        qrLoading.classList.remove('hidden');
+        videoQrCode.classList.remove('loaded');
+        videoQrCode.src = '';
+    }, 300);
+});
+
+// 点击模态框外部关闭
+videoModal.addEventListener('click', function(e) {
+    if (e.target === videoModal) {
+        videoModal.classList.remove('show');
+        document.body.style.overflow = '';
+        
+        // 重置状态
+        setTimeout(() => {
+            qrLoading.classList.remove('hidden');
+            videoQrCode.classList.remove('loaded');
+            videoQrCode.src = '';
+        }, 300);
+    }
+});
 }
