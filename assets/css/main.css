@@ -1073,6 +1073,18 @@
             margin: 30px 0;
         }
 
+        /* 总结展望部分的图片样式，使其占满横排 */
+        #researchCard16 .research-images {
+            grid-template-columns: 1fr;
+        }
+
+        #researchCard16 .research-img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
         /* 新闻稿图片横向滚动容器 */
         .news-scroll-card {
             position: relative;

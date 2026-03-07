@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const pauseBtn = videoContainer.querySelector('.pause-btn');
     const progressContainer = videoContainer.querySelector('.video-progress-container');
     const progressFilled = videoContainer.querySelector('.video-progress-filled');
+    const muteBtn = document.createElement('button');
+    muteBtn.className = 'video-control-btn mute-btn';
+    muteBtn.title = '静音/取消静音';
+    muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    
+    // 添加静音按钮到视频控制栏
+    const videoControls = videoContainer.querySelector('.video-controls');
+    videoControls.insertBefore(muteBtn, pauseBtn.nextSibling);
 
     if (!video || !videoCard || !videoContainer || !videoOverlay || !pauseBtn || !progressContainer || !progressFilled) return;
 
@@ -68,6 +76,22 @@ document.addEventListener('DOMContentLoaded', function() {
         e.stopPropagation();
         toggleVideo();
     });
+    
+    // 静音按钮点击事件
+    muteBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        updateMuteState();
+    });
+    
+    // 更新静音状态样式
+    function updateMuteState() {
+        if (video.muted) {
+            muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        } else {
+            muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+        }
+    }
 
     // 视频时间更新时更新进度条
     video.addEventListener('timeupdate', updateProgress);
