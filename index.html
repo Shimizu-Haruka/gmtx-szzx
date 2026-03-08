@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/music.css">
     <link rel="stylesheet" href="assets/css/video-modal.css">
     <link rel="stylesheet" href="assets/css/video-card.css">
+    <link rel="stylesheet" href="assets/css/mindmap.css">
 </head>
 
 <!-- 图片查看器模态框 -->
@@ -136,6 +137,29 @@
     </div>
 </div>
 
+<!-- 思维导图模态框 -->
+<div id="mindmapModal" class="mindmap-modal">
+    <div class="mindmap-modal-content">
+        <div class="mindmap-modal-header">
+            <h3 class="mindmap-modal-title">思维导图</h3>
+            <button id="mindmapCloseBtn" class="mindmap-close-btn">&times;</button>
+        </div>
+        <div class="mindmap-modal-body">
+            <div id="mindmapContainer" class="mindmap-container"></div>
+        </div>
+        <div class="mindmap-controls">
+            <button id="zoomInBtn" class="mindmap-control-btn" title="放大">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button id="zoomOutBtn" class="mindmap-control-btn" title="缩小">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button id="resetViewBtn" class="mindmap-control-btn" title="重置视图">
+                <i class="fas fa-compress-arrows-alt"></i>
+            </button>
+        </div>
+    </div>
+</div>
 
 
 <body>
@@ -509,6 +533,12 @@
                     <div class="news-images-wrapper">
                         <div class="news-images-container">
                             <div class="news-images-scroll">
+                                <button id="mindmapTriggerBtn" class="mindmap-trigger-btn">
+                                    <div class="btn-text">
+                                        <span class="btn-title">思维导图</span>
+                                        <span class="btn-subtitle">点击查看</span>
+                                    </div>
+                                </button>
                                 <img src="images/10-1.webp" alt="精心筹备" class="research-img">
                                 <img src="images/10-2.webp" alt="精心筹备" class="research-img">
                                 <img src="images/10-3.webp" alt="精心筹备" class="research-img">
@@ -560,7 +590,7 @@
                     <h3 class="research-card-title"><i class="fas fa-play-circle"></i>调研收官</h3>
                     <div class="video-wrapper">
                         <div class="video-container">
-                            <video id="researchVideo" class="research-video" playsinline loop preload="metadata">
+                            <video id="researchVideo" class="research-video" playsinline loop>
                                 <source src="videos/research.mp4" type="video/mp4">
                                 您的浏览器不支持视频播放。
                             </video>
@@ -699,5 +729,6 @@
    <script src="assets/js/music.js"></script>
    <script src="assets/js/video-modal-enhanced.js"></script>
    <script src="assets/js/video-card.js"></script>
+   <script src="assets/js/mindmap.js"></script>
 </body>
 </html>
